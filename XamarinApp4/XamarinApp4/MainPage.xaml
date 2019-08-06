@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:VM="clr-namespace:XamarinApp4;assembly=XamarinApp4"
+             x:Class="XamarinApp4.MainPage">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="FormWithValidationTemplate">
+            <telerikInput:MaskedInputElement
+                BackgroundColor="{TemplateBinding BackgroundColor}"
+                HorizontalTextAlignment="Start"
+                Placeholder="{TemplateBinding Placeholder}"
+                Margin="0"
+                HorizontalOptions="{TemplateBinding HorizontalOptions}"
+                VerticalOptions="{TemplateBinding VerticalOptions}"
+                WatermarkText="{TemplateBinding WatermarkText}"
+                DisplayedTextFont="{TemplateBinding DisplayedTextFont}"
+                WatermarkTextColor="{TemplateBinding WatermarkTextColor}"
+                DisplayedTextColor="{TemplateBinding DisplayedTextColor}"
+                DisplayedTextFontSize="{TemplateBinding DisplayedTextFontSize}"
+                Mask="{TemplateBinding Mask}"
+                MaskType="{TemplateBinding MaskType}"
+                InputValue="{TemplateBinding InputValue, Mode=TwoWay}"
+            />
+        </ControlTemplate>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+    <StackLayout>    
+        <telerikInput:RadMaskedInput 
+            x:Name="FirstName"
+            AutomationId="FirstName"
+            InvalidInputErrorText="Invalid First Name"
+            RejectedSymbolErrorText="Field contains an invalid character."
+            WatermarkText="First Name"
+            WatermarkTextColor="LightGray"
+            Mask="^[a-zA-Z._^%$#!~@,\\''-]+$"
+            MaskType="Regex"
+            Placeholder=" "
+            BackgroundColor="Transparent"
+            DisplayedTextColor="Black"
+            DisplayedTextFontSize="12"
+            ErrorFontSize="12"
+            ErrorColor="Red"
+            InputValue="{Binding FirstName, Mode=TwoWay}"
+            ControlTemplate="{StaticResource FormWithValidationTemplate}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand" />
+
+    </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
